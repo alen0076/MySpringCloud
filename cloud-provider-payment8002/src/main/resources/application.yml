@@ -16,7 +16,6 @@ spring:
         config:
           enabled: true
       connection-properties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJR2JHDmgxmvCdu6VmR6etfeP1vJo7bhz9IMpZjsIEeljnq6G5iRu1+2nyoDVqsrG3Epm0UHTMxLVyBUo2mGsJsCAwEAAQ==
-        #privateKey:MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAlHYkcOaDGa8J27pWZHp6194/W8mjtuHP0gylmOwgR6WOerobmJG7X7afKgNWqysbcSmbRQdMzEtXIFSjaYawmwIDAQABAkAnk8MtMdZbP3VyVR9408nxyDa9wmhZdaNQTLzMoo4Mayc5aOsJ7uF0u0K2h8nycrk2mwOiZr2FzlUmXvQBTTihAiEAxGUMImD7/5AeMN+7BqLTzMEgYQ2T/8KL+NSKBx2nz0sCIQDBhOhFSELSdIv4KXPl2sLGv5CSgjQps7kGONvDda/B8QIgXsYMhwKaWQepKhitXlRxNRv1jiBJTWEKvveB7FEpS+UCIGAVua4MvwD31TeWfXE3OVatbv8Pnw7FqaypNpTKLkZBAiEAoGLDX4ytuh8BpkAqjYANSfu05XJ5/dcFG5lW2Mv0sOg=
       # 连接池的配置信息
       # 初始化时建立物理连接的个数
       initial-size: 3

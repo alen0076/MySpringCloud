@@ -16,8 +16,7 @@ spring:
         config:
           enabled: true
       connection-properties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJR2JHDmgxmvCdu6VmR6etfeP1vJo7bhz9IMpZjsIEeljnq6G5iRu1+2nyoDVqsrG3Epm0UHTMxLVyBUo2mGsJsCAwEAAQ==
-      #privateKey:MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAlHYkcOaDGa8J27pWZHp6194/W8mjtuHP0gylmOwgR6WOerobmJG7X7afKgNWqysbcSmbRQdMzEtXIFSjaYawmwIDAQABAkAnk8MtMdZbP3VyVR9408nxyDa9wmhZdaNQTLzMoo4Mayc5aOsJ7uF0u0K2h8nycrk2mwOiZr2FzlUmXvQBTTihAiEAxGUMImD7/5AeMN+7BqLTzMEgYQ2T/8KL+NSKBx2nz0sCIQDBhOhFSELSdIv4KXPl2sLGv5CSgjQps7kGONvDda/B8QIgXsYMhwKaWQepKhitXlRxNRv1jiBJTWEKvveB7FEpS+UCIGAVua4MvwD31TeWfXE3OVatbv8Pnw7FqaypNpTKLkZBAiEAoGLDX4ytuh8BpkAqjYANSfu05XJ5/dcFG5lW2Mv0sOg=
-        # 连接池的配置信息
+      # 连接池的配置信息
       # 初始化时建立物理连接的个数
       initial-size: 3
       # 连接池最小连接数
@@ -33,7 +32,7 @@ spring:
       # 销毁线程时检测当前连接的最后活动时间和当前时间差大于该值时，关闭当前连接
       min-evictable-idle-time-millis: 30000
         # 用来检测连接是否有效的sql 必须是一个查询语句
-        # mysql中为 select 'x'
+      # mysql中为 select 'x'
       # oracle中为 select 1 from dual
       validation-query: select 'x'
       # 申请连接时会执行validationQuery检测连接是否有效,开启会降低性能,默认为true
