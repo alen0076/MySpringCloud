@@ -1,0 +1,91 @@
+server:
+  port: 8002
+
+
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver    #MySql驱动包
+    url: jdbc:mysql://106.15.234.73:3306/db2019?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: h6Kkca6aVXDblB8EbQebWBN3OM2gI9JGnnf5WrnmV2QNicogTjSXrsbw0SgOxPSD61AElEzVgqXmMMiZjPGo3w==
+    druid:
+      filter:
+        config:
+          enabled: true
+      connection-properties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJR2JHDmgxmvCdu6VmR6etfeP1vJo7bhz9IMpZjsIEeljnq6G5iRu1+2nyoDVqsrG3Epm0UHTMxLVyBUo2mGsJsCAwEAAQ==
+        #privateKey:MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAlHYkcOaDGa8J27pWZHp6194/W8mjtuHP0gylmOwgR6WOerobmJG7X7afKgNWqysbcSmbRQdMzEtXIFSjaYawmwIDAQABAkAnk8MtMdZbP3VyVR9408nxyDa9wmhZdaNQTLzMoo4Mayc5aOsJ7uF0u0K2h8nycrk2mwOiZr2FzlUmXvQBTTihAiEAxGUMImD7/5AeMN+7BqLTzMEgYQ2T/8KL+NSKBx2nz0sCIQDBhOhFSELSdIv4KXPl2sLGv5CSgjQps7kGONvDda/B8QIgXsYMhwKaWQepKhitXlRxNRv1jiBJTWEKvveB7FEpS+UCIGAVua4MvwD31TeWfXE3OVatbv8Pnw7FqaypNpTKLkZBAiEAoGLDX4ytuh8BpkAqjYANSfu05XJ5/dcFG5lW2Mv0sOg=
+      # 连接池的配置信息
+      # 初始化时建立物理连接的个数
+      initial-size: 3
+      # 连接池最小连接数
+      min-idle: 3
+      # 连接池最大连接数
+      max-active: 20
+      # 获取连接时最大等待时间，单位毫秒
+      max-wait: 60000
+      # 申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+      test-while-idle: true
+      # 既作为检测的间隔时间又作为testWhileIdel执行的依据
+      time-between-connect-error-millis: 60000
+      # 销毁线程时检测当前连接的最后活动时间和当前时间差大于该值时，关闭当前连接
+      min-evictable-idle-time-millis: 30000
+        # 用来检测连接是否有效的sql 必须是一个查询语句
+      # mysql中为 select 'x'
+      # oracle中为 select 1 from dual
+      validation-query: select 'x'
+      # 申请连接时会执行validationQuery检测连接是否有效,开启会降低性能,默认为true
+      test-on-borrow: false
+      # 归还连接时会执行validationQuery检测连接是否有效,开启会降低性能,默认为true
+      test-on-return: false
+      # 是否缓存preparedStatement,mysql5.5+建议开启
+      pool-prepared-statements: true
+      # 当值大于0时poolPreparedStatements会自动修改为true
+      max-pool-prepared-statement-per-connection-size: 20
+      # 合并多个DruidDataSource的监控数据
+      use-global-data-source-stat: false
+      # 配置扩展插件
+      filters: stat,wall,slf4j
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      # 定时输出统计信息到日志中，并每次输出日志会导致清零（reset）连接池相关的计数器。
+      time-between-log-stats-millis: 300000
+      # 配置DruidStatFilter
+      web-stat-filter:
+        enabled: true
+        url-pattern: '/*'
+        exclusions: '*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*'
+        # 配置DruidStatViewServlet
+      stat-view-servlet:
+        # 是否启用StatViewServlet（监控页面）默认值为false（考虑到安全问题默认并未启动，如需启用建议设置密码或白名单以保障安全）
+        enabled: true
+        url-pattern: '/druid/*'
+        # IP白名单(没有配置或者为空，则允许所有访问)
+        allow: 127.0.0.1,192.168.0.1
+        # IP黑名单 (存在共同时，deny优先于allow)
+        deny: 192.168.0.128
+        # 禁用HTML页面上的“Reset All”功能
+        reset-enable: false
+        # 登录名
+        login-username: admin
+        # 登录密码
+        login-password: admin
+
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.practice.springcloud.entities #所有Entity别名类所在包
+
+eureka:
+  client:
+    #是否将自身注册进EurekaServer 默认为true
+    register-with-eureka: true
+    #是否从EurekaServer获取已有的注册信息，集群环境必须为true才能配合Ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eurekaserver7001:7001/eureka,http://eurekaserver7002:7002/eureka
+  instance:
+    instance-id: payment8002
+    prefer-ip-address: true
