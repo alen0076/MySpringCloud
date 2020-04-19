@@ -10,12 +10,12 @@ spring:
     driver-class-name: org.gjt.mm.mysql.Driver    #MySql驱动包
     url: jdbc:mysql://106.15.234.73:3306/db2019?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
-    password: h6Kkca6aVXDblB8EbQebWBN3OM2gI9JGnnf5WrnmV2QNicogTjSXrsbw0SgOxPSD61AElEzVgqXmMMiZjPGo3w==
+    password: mxFbcYuq0GZHaC6Ay5fOcOao31yvoCpLeKYiAX+i3UWKx6zF05YURrnrKym++CCNR+T1Qud3MO5O/ifa0UfrdQ==
     druid:
       filter:
         config:
           enabled: true
-      connection-properties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJR2JHDmgxmvCdu6VmR6etfeP1vJo7bhz9IMpZjsIEeljnq6G5iRu1+2nyoDVqsrG3Epm0UHTMxLVyBUo2mGsJsCAwEAAQ==
+      connection-properties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMkJtfhfjHx5c7YTNTE9+9I/VdhlNXQfFZh81dTjCbqrkoJMQlph9/fHz1LWuiWRN9h5ToNSoS4POGvIZdYCLzECAwEAAQ==
       # 连接池的配置信息
       # 初始化时建立物理连接的个数
       initial-size: 3
