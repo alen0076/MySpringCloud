@@ -4,6 +4,7 @@ import com.practice.springcloud.entities.CommonResult;
 import com.practice.springcloud.entities.Payment;
 import com.practice.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,8 @@ import java.util.Map;
 @RestController
 @Slf4j
 public class PaymentController {
+    @Value("${server.port}")
+    private String port;
 
     @Resource
     private PaymentService paymentService;
@@ -68,6 +71,11 @@ public class PaymentController {
         }
 
         return discoveryClient;
+    }
+
+    @GetMapping(value = "/payment/lb")
+    public String getLBPort() {
+        return port;
     }
 
 }
