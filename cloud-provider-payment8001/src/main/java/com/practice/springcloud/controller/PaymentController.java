@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Alen0076
@@ -44,13 +45,14 @@ public class PaymentController {
     }
 
     @GetMapping(value = "/payment/get/{id}")
-    public CommonResult<Payment> getPaymentByID(@PathVariable("id") Long id) {
+    public CommonResult<Payment> getPaymentByID(@PathVariable("id") Long id) throws InterruptedException {
         Payment payment = paymentService.getPaymentByID(id);
         log.info("获取 Payment");
+        TimeUnit.SECONDS.sleep(3);
         if (payment != null) {
-            return new CommonResult<>(200, "查询成功", payment);
+            return new CommonResult<>(200, "查询成功"+port, payment);
         } else {
-            return new CommonResult<>(400, "查询无数据", null);
+            return new CommonResult<>(400, "查询无数据"+port, null);
         }
     }
 
